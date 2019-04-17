@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import Left from './page/Life'
+
 class App extends Component {
   render() {
     return (
@@ -18,6 +20,7 @@ class App extends Component {
             rel="noopener noreferrer"
           >
             Learn React
+              <Left></Left>
           </a>
         </header>
       </div>
