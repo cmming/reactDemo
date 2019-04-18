@@ -1,5 +1,20 @@
 const menuList = [
     {
+        "key": "/",
+        "title": "管理员",
+        "icon": "user",
+        "childrens": [
+            {
+                "key": "/about",
+                "title": "about",
+            },
+            {
+                "key": "/topics",
+                "title": "topics",
+            }
+        ]
+    },
+    {
         "key": "/admin",
         "title": "管理员",
         "icon": "user",
@@ -10,21 +25,6 @@ const menuList = [
             },
             {
                 "key": "/admin/delete",
-                "title": "删除",
-            }
-        ]
-    },
-    {
-        "key": "/admin/1",
-        "title": "管理员",
-        "icon": "user",
-        "childrens": [
-            {
-                "key": "/admin/add/1",
-                "title": "添加",
-            },
-            {
-                "key": "/admin/delete/1",
                 "title": "删除",
             }
         ]
