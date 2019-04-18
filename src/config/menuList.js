@@ -1,34 +1,27 @@
 const menuList = [
     {
-        "key": "/",
-        "title": "管理员",
-        "icon": "user",
+        "key": "/admin/dashborad",
+        "title": "首页",
+        "icon": "dashboard",
+    },
+    {
+        "key": "/admin/",
+        "title": "系统设置",
+        "iconComponent":true,
+        "icon": "setting",
         "childrens": [
             {
-                "key": "/about",
-                "title": "about",
+                "key": "/admin/about",
+                "title": "关于",
+                "icon": "question",
             },
             {
-                "key": "/topics",
-                "title": "topics",
+                "key": "/admin/users",
+                "title": "用户",
+                "icon": "user",
             }
         ]
     },
-    {
-        "key": "/admin",
-        "title": "管理员",
-        "icon": "user",
-        "childrens": [
-            {
-                "key": "/admin/add",
-                "title": "添加",
-            },
-            {
-                "key": "/admin/delete",
-                "title": "删除",
-            }
-        ]
-    }
 ]
 
 export default menuList
