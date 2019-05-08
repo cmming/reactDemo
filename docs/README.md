@@ -84,3 +84,9 @@ const lessModuleRegex = /\.module\.less$/;
 
 >React Router
 
+
+
+
+## 高阶组件
+
+> 1.属性代理 2.反向继承
