@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {Layout, Icon} from 'antd';
+import {Layout, Icon,Card} from 'antd';
 import '../../../admin.less';
 
 import Menus from './components/menu/index'
@@ -35,9 +35,9 @@ export default class Admin extends React.Component {
                         />
                     </Header>
                     <Content style={{margin: '24px 16px 0', overflow: 'initial'}}>
-                        <div style={{background: '#fff', textAlign: 'center'}}>
+                        <Card>
                             {this.props.children}
-                        </div>
+                        </Card>
                     </Content>
                     <Footer style={{textAlign: 'center'}}>
                         admin tempalte ©2018 Created by chmi

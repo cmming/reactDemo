@@ -5,7 +5,7 @@
   "dependencies": {
     "@babel/core": "7.2.2",
     "@svgr/webpack": "4.1.0",
-    "antd": "^3.16.2",
+    "antd": "^3.19.1",
     "axios": "^0.18.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "9.0.0",
@@ -121,9 +121,13 @@
   "babel": {
     "presets": [
       "react-app"
+    ],
+    "plugins": [
+      ["@babel/plugin-proposal-decorators", { "legacy": true }]
     ]
   },
   "devDependencies": {
+    "babel-plugin-transform-decorators-legacy": "^1.3.5",
     "less-loader": "^4.1.0"
   }
 }
