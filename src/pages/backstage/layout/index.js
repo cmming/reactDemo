@@ -34,7 +34,7 @@ export default class Admin extends React.Component {
                             style={{paddingLeft: 16}}
                         />
                     </Header>
-                    <Content style={{margin: '24px 16px 0', overflow: 'initial'}}>
+                    <Content style={{margin: '24px 16px 0', overflow: 'initial',minHeight:"calc(100vh - 157px)"}}>
                         <Card>
                             {this.props.children}
                         </Card>

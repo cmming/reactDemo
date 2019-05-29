@@ -49,6 +49,19 @@ const menuList = [
             },
         ]
     },
+    {
+        "key": "/admin/redux",
+        "title": "redux",
+        "iconComponent":true,
+        "icon": "setting",
+        "childrens": [
+            {
+                "key": "/admin/redux/demo",
+                "title": "redux 装饰器",
+                "icon": "question",
+            },
+        ]
+    },
 ]
 
 export default menuList
