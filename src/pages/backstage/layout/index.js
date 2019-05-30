@@ -1,39 +1,28 @@
 import React from 'react'
+import {connect} from 'react-redux'
 
-import {Layout, Icon,Card} from 'antd';
+import {Layout,Card} from 'antd';
 import '../../../admin.less';
 
 import Menus from './components/menu/index'
+import Vheader from './components/header/index'
 
 
-const {Header, Content, Footer,} = Layout;
+const {Content, Footer,} = Layout;
 
 
-export default class Admin extends React.Component {
+@connect(
+    state => state.layout
+)
+class Admin extends React.Component {
 
-    state = {
-        collapsed: false,
-    };
-
-    toggle = () => {
-        this.setState({
-            collapsed: !this.state.collapsed,
-        });
-    }
 
     render() {
         return (
             <Layout>
-                <Menus collapsed={this.state.collapsed}></Menus>
-                <Layout style={{marginLeft: !this.state.collapsed ? 200 : 85}}>
-                    <Header style={{background: '#fff', padding: 0}}>
-                        <Icon
-                            className="trigger"
-                            type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
-                            onClick={this.toggle}
-                            style={{paddingLeft: 16}}
-                        />
-                    </Header>
+                <Menus collapsed={this.props.collapsed}></Menus>
+                <Layout style={{marginLeft: !this.props.collapsed ? 200 : 85}}>
+                    <Vheader></Vheader>
                     <Content style={{margin: '24px 16px 0', overflow: 'initial',minHeight:"calc(100vh - 157px)"}}>
                         <Card>
                             {this.props.children}
@@ -47,5 +36,7 @@ export default class Admin extends React.Component {
         );
     }
 }
+
+export default Admin
 
 

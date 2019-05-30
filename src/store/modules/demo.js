@@ -14,11 +14,9 @@ export function demo(state = initState,action){
     switch (action.type) {
         //不要直接去改 state 会导致state 修改了但是不会触发 页面的重新渲染
         case ADD:
-            let ojb = {number:state.number+1}
-            return {...state,...ojb}
+            return {...state,...{number:state.number+1}}
         case DELETE:
-            state.number-=1
-            return {...state}
+            return {...state,...{number:state.number-1}}
         default:
             return {...state}
     }
