@@ -1,11 +1,29 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {Layout,Icon} from "antd";
+import {Layout,Icon,Menu, Dropdown} from "antd";
 import {TOGGLE_MENU_ACTION} from "../../../../../store/modules/layout";
 
 const {Header} = Layout;
 
-
+const menu = (
+    <Menu>
+        <Menu.Item>
+            <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">
+                1st menu item
+            </a>
+        </Menu.Item>
+        <Menu.Item>
+            <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">
+                2nd menu item
+            </a>
+        </Menu.Item>
+        <Menu.Item>
+            <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">
+                3rd menu item
+            </a>
+        </Menu.Item>
+    </Menu>
+);
 
 
 
@@ -23,6 +41,11 @@ class Vheader extends React.Component{
                     onClick={this.props.TOGGLE_MENU_ACTION}
                     style={{paddingLeft: 16}}
                 />
+                <Dropdown overlay={menu}>
+                    <a className="ant-dropdown-link" href="#">
+                        Hover me <Icon type="down" />
+                    </a>
+                </Dropdown>,
             </Header>
 
     }

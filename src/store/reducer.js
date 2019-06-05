@@ -2,4 +2,5 @@
 import { combineReducers } from 'redux'
 import { demo } from './modules/demo'
 import { layout } from './modules/layout'
-export default combineReducers({demo,layout})
+import { language } from './modules/language'
+export default combineReducers({demo,layout,language})
