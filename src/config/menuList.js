@@ -50,6 +50,19 @@ const menuList = [
         ]
     },
     {
+        "key": "/admin/table",
+        "title": "table",
+        "iconComponent":true,
+        "icon": "setting",
+        "childrens": [
+            {
+                "key": "/admin/table/index",
+                "title": "基础table",
+                "icon": "question",
+            },
+        ]
+    },
+    {
         "key": "/admin/redux",
         "title": "redux",
         "iconComponent":true,

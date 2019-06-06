@@ -5,7 +5,7 @@ const TOGGLE_LANGUAGE = '切换语言'
 
 
 const initState = {
-    language:'zh-cn'
+    language:storage.get('react-language')?storage.get('react-language'):'zh'
 }
 
 
@@ -23,6 +23,6 @@ export function language(state = initState,action){
 }
 
 
-export function TOGGLE_LANGUAGE_ACTION() {
-    return {type:TOGGLE_LANGUAGE}
+export function TOGGLE_LANGUAGE_ACTION(language) {
+    return {type:TOGGLE_LANGUAGE, payload: { language:language }}
 }

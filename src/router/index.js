@@ -1,7 +1,6 @@
 import React from 'react'
 
 import {HashRouter as Router, Route, Switch} from "react-router-dom";
-import App from '../App'
 
 import Login from '../pages/login/index'
 
@@ -18,7 +17,7 @@ import asyncComponent from '../utils/asyncComponent'
 // ]
 
 
-export default class Routers extends React.Component {
+class Routers extends React.Component {
 
 
     //TOD 动态生成菜单
@@ -33,7 +32,6 @@ export default class Routers extends React.Component {
 
     render() {
         return <Router>
-            <App>
                 <Switch>
                     <Route exact={true} path="/" component={Login}/>
                     <Route path="/login" component={Login}/>
@@ -59,6 +57,9 @@ export default class Routers extends React.Component {
                                 <Route path="/admin/redux/demo"
                                        component={asyncComponent(() => import("../pages/backstage/redux/demo"))}/>
 
+                                <Route path="/admin/table/index"
+                                       component={asyncComponent(() => import("../pages/backstage/table/index"))}/>
+
                                 {/*{this.renderRouter(RouterList)}*/}
                                 <Route component={NotMatch}/>
                             </Switch>
@@ -66,7 +67,9 @@ export default class Routers extends React.Component {
                     }/>
                     <Route component={NotMatch}/>
                 </Switch>
-            </App>
         </Router>
     }
 }
+
+
+export default Routers
