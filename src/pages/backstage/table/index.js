@@ -1,30 +1,34 @@
 import React from 'react';
 import {connect} from 'react-redux'
+import {injectIntl} from 'react-intl';
 import Ctable from '../../../ui/table/index'
-import  { SET_TABLEINDEX_BTN_ACTION,GET_TABLEINDEX_LIST_ACTION } from '../../../store/modules/tableindex';
+import  { index,destory,initBtn } from '../../../store/modules/tableindex';
 
 @connect(
     state => state.tableindex,
-    {SET_TABLEINDEX_BTN_ACTION,GET_TABLEINDEX_LIST_ACTION}
+    {index,destory,initBtn}
 )
+@injectIntl
 class TableIndex extends React.Component {
     //制作是否加载按钮的开关
-    componentWillMount(){
-        if(!this.props.table.hasHandleColumns){
-            this.props.SET_TABLEINDEX_BTN_ACTION({
-                title: 'Action',
-                key: 'action',
-                render: () => <a href = "javascript:;" > Delete </a>,
-            })
-        }
+    // componentWillMount(){
+    //     this.props.SET_TABLEINDEX_BTN_ACTION({
+    //         titleKey: 'Action',
+    //         key: 'action',
+    //         render: (scope) => <a onClick={() => this.deleteItem(scope)} href = "javascript:;" > {this.props.intl.formatMessage({id:'tableIndex.columns.Action.Delete'})} </a>,
+    //     })
+    //
+    //     this.props.GET_TABLEINDEX_LIST_ACTION()
+    // }
 
-        this.props.GET_TABLEINDEX_LIST_ACTION()
+    deleteItem=(data)=>{
+        console.log(data)
     }
 
     render(){
-        console.log(this.props.table)
         return (
-            <Ctable model={this.props.table}>
+            <Ctable>
+                {this.props}
             </Ctable>
         )
     }

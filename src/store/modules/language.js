@@ -1,7 +1,7 @@
 
 import storage from '../../utils/storage'
 
-const TOGGLE_LANGUAGE = '切换语言'
+const TOGGLE_LANGUAGE = 'TOGGLE_LANGUAGE'
 
 
 const initState = {

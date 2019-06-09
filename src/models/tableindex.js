@@ -1,53 +1,35 @@
 // import React from 'react';
+
+
 export default {
+    index:'tableIndex',
     table: {
         columns: [
             {
-                title: 'Date',
+                titleKey: 'Date',
                 dataIndex: 'date',
             },
             {
-                title: 'Amount',
+                titleKey: 'Amount',
                 dataIndex: 'amount',
             },
             {
-                title: 'Type',
+                titleKey: 'Type',
                 dataIndex: 'type',
+                filter:"changeTableIndexType"
             },
             {
-                title: 'Note',
+                titleKey: 'Note',
                 dataIndex: 'note',
             },
-            //在父组件中去自定义
-            // {
-            //     title: 'Action',
-            //     key: 'action',
-            //     render: () => <a href = "javascript:;" > Delete </a>,
-            // },
         ],
-        hasHandleColumns:false,
+        commonAction:{
+            titleKey: 'Action',
+            key: 'action',
+            deleteAction:{show:true,titleKey: 'Delete',},
+            editAction:{show:true,titleKey: 'Edit',},
+        },
         dataSource: [
-            // {
-            //     key: 0,
-            //     date: '2018-02-11',
-            //     amount: 120,
-            //     type: 'income',
-            //     note: 'transfer',
-            // },
-            // {
-            //     key: 1,
-            //     date: '2018-03-11',
-            //     amount: 243,
-            //     type: 'income',
-            //     note: 'transfer',
-            // },
-            // {
-            //     key: 2,
-            //     date: '2018-04-11',
-            //     amount: 98,
-            //     type: 'income',
-            //     note: 'transfer',
-            // },
         ]
     }
 }

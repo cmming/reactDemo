@@ -7,7 +7,7 @@ export default {
     list: config => {
         // const { username } = JSON.parse(config.body)
         // console.log(username)
-        // console.log(param2Obj(config.url))
+        console.log(config,param2Obj(config.body))
         const { id } = param2Obj(config.url)
         console.log(id)
         var result = {
