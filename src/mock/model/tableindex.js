@@ -29,7 +29,7 @@ export default {
                 key: i,
                 date: Random.date('yyyy-MM-dd'),
                 amount: Random.integer(60, 100),
-                type: 'income',
+                type: Random.integer(-1,1),
                 note: 'transfer',
             };
             result.data.push(tmp)

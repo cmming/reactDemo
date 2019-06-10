@@ -30,6 +30,11 @@ export default {
             editAction:{show:true,titleKey: 'Edit',},
         },
         dataSource: [
-        ]
+        ],
+        state:{
+            bordered: true,
+            size: 'default',
+            hasRowSelection: true,
+          }
     }
 }

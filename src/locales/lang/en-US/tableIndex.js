@@ -6,4 +6,7 @@ export default {
     'tableIndex.columns.Action': "操作",
     'tableIndex.columns.Action.Delete': "删除",
     'tableIndex.columns.Action.Edit': "编辑",
+    'tableIndex.columns.type.-1': "失败",
+    'tableIndex.columns.type.0': "初始状态",
+    'tableIndex.columns.type.1': "成功",
 }

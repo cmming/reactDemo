@@ -25,7 +25,7 @@ Mock.mock(/\/table\/demo/, 'post', {
         'key|+1': 1,
         'date': Random.date('yyyy-MM-dd'),
         'amount': Random.integer(60, 100),
-        'type': 'income1',
+        'type': 1,
         'note': 'transfer',
         'typenewnew':444
     }]

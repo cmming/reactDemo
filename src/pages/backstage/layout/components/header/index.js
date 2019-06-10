@@ -34,20 +34,20 @@ class Vheader extends React.Component{
                     <Dropdown overlay={()=>{
                         return  <Menu defaultSelectedKeys={[this.props.language]} selectedKeys={[this.props.language]}>
                         <Menu.Item key="zh">
-                            <a target="_blank" rel="noopener noreferrer" href="javascript:void(0)" onClick={()=>this.props.TOGGLE_LANGUAGE_ACTION('zh')}>
+                            <span onClick={()=>this.props.TOGGLE_LANGUAGE_ACTION('zh')}>
                                 {this.props.intl.formatMessage({id:"intl.header.language.zhCN"})}
-                            </a>
+                            </span>
                         </Menu.Item>
                         <Menu.Item key="en">
-                            <a target="_blank" rel="noopener noreferrer" href="javascript:void(0)" onClick={()=>this.props.TOGGLE_LANGUAGE_ACTION('en')}>
+                            <span onClick={()=>this.props.TOGGLE_LANGUAGE_ACTION('en')}>
                                 {this.props.intl.formatMessage({id:"intl.header.language.enGB"})}
-                            </a>
+                            </span>
                         </Menu.Item>
                     </Menu>
                     }}>
-                        <a className="ant-dropdown-link" href="javascript:void(0)">
+                        <span className="ant-dropdown-link">
                             <Icon type="global" />
-                        </a>
+                        </span>
                     </Dropdown>
                 </span>
             </Header>

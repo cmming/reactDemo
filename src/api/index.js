@@ -13,7 +13,7 @@ const service = axios.create({
 
 
 service.interceptors.request.use(config => {
-    store.dispatch({type:'SHOW_LOADING'})
+    store.dispatch({ type: 'SHOW_LOADING' })
     if (
         config.method === "post" ||
         config.method === "put" ||
@@ -23,16 +23,16 @@ service.interceptors.request.use(config => {
     }
     return config
 }, error => {
-    store.dispatch({type:'HIDE_LOADING'})
+    store.dispatch({ type: 'HIDE_LOADING' })
     return Promise.reject(error);
 })
 
 service.interceptors.response.use(response => {
-    store.dispatch({type:'HIDE_LOADING'})
+    store.dispatch({ type: 'HIDE_LOADING' })
 
     return response;
 }, error => {
-    store.dispatch({type:'HIDE_LOADING'})
+    store.dispatch({ type: 'HIDE_LOADING' })
     return Promise.reject(error);
 })
 

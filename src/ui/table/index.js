@@ -1,11 +1,12 @@
 import React from 'react';
-import {Table,Card,Modal, Skeleton} from 'antd'
-// import {injectIntl} from 'react-intl';
+import {Table,Card,Modal,Button} from 'antd'
+import filter from '../../filter/index'
+import {injectIntl} from 'react-intl';
 
 
 const confirm = Modal.confirm;
 
-// @injectIntl
+@injectIntl
 class Ctable extends React.Component {
 
 
@@ -21,11 +22,11 @@ class Ctable extends React.Component {
     showDeleteConfirm=(data)=> {
         let self = this
         confirm({
-            title: this.props.children.intl.formatMessage({id:"tableAction.delete.confirm.title"}),
-            content: this.props.children.intl.formatMessage({id:"tableAction.delete.confirm.content"}),
-            okText: this.props.children.intl.formatMessage({id:"tableAction.delete.confirm.okText"}),
+            title: this.props.intl.formatMessage({id:"tableAction.delete.confirm.title"}),
+            content: this.props.intl.formatMessage({id:"tableAction.delete.confirm.content"}),
+            okText: this.props.intl.formatMessage({id:"tableAction.delete.confirm.okText"}),
             okType: 'danger',
-            cancelText: this.props.children.intl.formatMessage({id:"tableAction.delete.confirm.cancelText"}),
+            cancelText: this.props.intl.formatMessage({id:"tableAction.delete.confirm.cancelText"}),
             onOk() {
                 //发送删除的请求
                 self.props.children.destory(data.key)
@@ -40,24 +41,25 @@ class Ctable extends React.Component {
     renderAction=(scope)=>{
         let deleteBtn,editBtn;
         if(this.props.children.table.commonAction.deleteAction.show){
-            deleteBtn=<a href = "javascript:;" onClick={()=>{this.deleteItem(scope)}}> {this.props.children.intl.formatMessage({id:'tableIndex.columns.Action.'+this.props.children.table.commonAction.deleteAction.titleKey})} </a>;
+            deleteBtn=<Button type="danger" ghost icon="delete" onClick={()=>{this.deleteItem(scope)}}> {this.props.intl.formatMessage({id:'tableIndex.columns.Action.'+this.props.children.table.commonAction.deleteAction.titleKey})} </Button>;
         }
 
         if(this.props.children.table.commonAction.editAction.show){
-            editBtn=<a href = "javascript:;" onClick={()=>{this.editItem(scope)}}> {this.props.children.intl.formatMessage({id:'tableIndex.columns.Action.'+this.props.children.table.commonAction.editAction.titleKey})} </a>;
+            editBtn=<Button type="primary" ghost icon="edit" onClick={()=>{this.editItem(scope)}}> {this.props.intl.formatMessage({id:'tableIndex.columns.Action.'+this.props.children.table.commonAction.editAction.titleKey})} </Button>;
+        }
+        // this.props.addCustomBtn()
+        let addCustomBtnHtml='';
+        if(typeof this.props.addCustomBtn === "function"){
+            addCustomBtnHtml = this.props.addCustomBtn(scope)
         }
 
 
-        return (<div>
+        return (<div className="tableAction">
                 {deleteBtn}
                 {editBtn}
+                {addCustomBtnHtml}
             </div>
             )
-    }
-
-    columsFilter(data,filterName){
-        console.log(data,filterName)
-        return 99
     }
 
     componentWillMount(){
@@ -69,27 +71,50 @@ class Ctable extends React.Component {
             render: (scope)=>{ return this.renderAction(scope)},
         })
 
+        this.props.children.table.columns.map(val=>{
+            switch (val.filter) {
+                case 'changeTableIndexType':
+                    filter.changeTableIndexType(val)
+                    break;
+                default:
+                    return ''
+            }
+            return ''
+        })
+
         this.props.children.index()
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         this.props.children.table.columns.map(val=>{
-            val['title'] = this.props.children.intl.formatMessage({id: this.props.children.table.index+'.columns.'+val.titleKey})
-            // if(val['filter']){
-            //     this.props.children.table.dataSource.map(v=>{
-            //         v[val['dataIndex']] = this.columsFilter(v,val['filter'])
-            //     })
-            // }
+            val['title'] = this.props.intl.formatMessage({id: this.props.children.table.index+'.columns.'+val.titleKey})
+            return ''
         })
     }
 
+    
+
 
     render(){
+        const rowSelection = {
+            onChange: (selectedRowKeys, selectedRows) => {
+                console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+              },
+              onSelect: (record, selected, selectedRows) => {
+                console.log(record, selected, selectedRows);
+              },
+              onSelectAll: (selected, selectedRows, changeRows) => {
+                console.log(selected, selectedRows, changeRows);
+              },
+        }
+        let tableState = this.props.children.table.state
+        if(this.props.children.table.state.hasRowSelection){
+            tableState = {...this.props.children.table.state,rowSelection:rowSelection}
+        }
         return (
-
-                <Card title={"基础表格"}>
-                        <Table bordered components={this.components} columns={this.props.children.table.columns} dataSource={this.props.children.table.dataSource} pagination={false}/>
-                </Card>
+            <Card>
+                    <Table {...tableState} components={this.components} columns={this.props.children.table.columns} dataSource={this.props.children.table.dataSource} pagination={false}/>
+            </Card>
 
         )
     }
