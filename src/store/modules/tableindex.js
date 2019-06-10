@@ -33,7 +33,7 @@ export function index(dataSource) {
     return dispatch => {
         requestMap('GET_TABLE_INDEX_LIST')
             .then(res => {
-                dispatch(TABLEINDEX_LIST(res.data.data))
+                dispatch(TABLEINDEX_LIST(res.data))
             })
 
     }
@@ -51,7 +51,7 @@ export function destory(id) {
         requestMap('DELETE_TABLE_INDEX_LIST', {id: id})
             .then(res => {
                     console.log(res)
-                    dispatch(TABLEINDEX_LIST(res.data.data))
+                    dispatch(TABLEINDEX_LIST(res.data))
                 }
             )
     }

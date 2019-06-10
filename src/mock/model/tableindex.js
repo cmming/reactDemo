@@ -11,7 +11,7 @@ export default {
         const { id } = param2Obj(config.url)
         console.log(id)
         var result = {
-            "total": 50,
+            "total": Random.integer(60, 100),
             "per_page": 15,
             "current_page": 1,
             "last_page": 4,

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Table,Card,Modal,Button} from 'antd'
+import {Table,Card,Modal,Button,Pagination} from 'antd'
 import filter from '../../filter/index'
 import {injectIntl} from 'react-intl';
 
@@ -92,6 +92,18 @@ class Ctable extends React.Component {
         })
     }
 
+    onChange=(page, pageSize)=> {
+        console.log('Page: ', page);
+    }
+
+    onShowSizeChange=(current, size)=>{
+        console.log(current, size)
+    }
+
+    showTotal=(total) =>{
+        return `Total ${total} items`;
+    }
+
     
 
 
@@ -113,7 +125,17 @@ class Ctable extends React.Component {
         }
         return (
             <Card>
-                    <Table {...tableState} components={this.components} columns={this.props.children.table.columns} dataSource={this.props.children.table.dataSource} pagination={false}/>
+                    <Table {...tableState} components={this.components} columns={this.props.children.table.columns} dataSource={this.props.children.table.dataSource.data} pagination={false}/>
+
+                    <Pagination
+                        className="table-pagination"
+                        showSizeChanger
+                        showQuickJumper
+                        defaultCurrent={this.props.children.table.dataSource.current_page}
+                        total={this.props.children.table.dataSource.total}
+                        showTotal={(total)=>this.showTotal(total)}
+                        onChange={(pageNumber,pageSize)=>this.onChange(pageNumber,pageSize)}
+                        onShowSizeChange={(current, size)=>this.onShowSizeChange(current, size)} />
             </Card>
 
         )
