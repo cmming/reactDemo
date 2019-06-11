@@ -29,7 +29,7 @@ class Ctable extends React.Component {
             cancelText: this.props.intl.formatMessage({id:"tableAction.delete.confirm.cancelText"}),
             onOk() {
                 //发送删除的请求
-                self.props.children.destory(data.key)
+                self.props.children.destory(data.key,self.props.children.table.searchData)
 
             },
             onCancel() {
@@ -82,7 +82,7 @@ class Ctable extends React.Component {
             return ''
         })
 
-        this.props.children.index()
+        this.props.children.index(this.props.children.table.searchData)
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -92,12 +92,25 @@ class Ctable extends React.Component {
         })
     }
 
-    onChange=(page, pageSize)=> {
-        console.log('Page: ', page);
+    onChange=(page, page_size)=> {
+        let searchData = {...this.props.children.table.searchData,page:page,page_size:page_size}
+        console.log(searchData)
+        //修改请求参数
+        this.props.children.setSearchData(searchData)
+        //发送列表 将异步操作 变成同步
+        // this.props.children.index(this.props.children.table.searchData)
+        //TODO 这种操作不太好 不知如何修改 临时方案
+        setTimeout(()=>{this.props.children.index(this.props.children.table.searchData)})
     }
 
-    onShowSizeChange=(current, size)=>{
-        console.log(current, size)
+    onShowSizeChange=(current, page_size)=>{
+        let searchData = {...this.props.children.table.searchData,page:current,page_size:page_size}
+        //修改请求参数
+        this.props.children.setSearchData(searchData)
+        //发送列表 将异步操作 变成同步
+        //TODO 这种操作不太好 不知如何修改 临时方案
+        setTimeout(()=>{this.props.children.index(this.props.children.table.searchData)})
+
     }
 
     showTotal=(total) =>{

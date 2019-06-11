@@ -7,9 +7,9 @@ Mock.setup({
 })
 //login
 //获取验证码
-Mock.mock(/\/table\/index/, 'post', tableindex.list)
+Mock.mock(/\/table\/demo/, 'post', tableindex.list)
 
-Mock.mock(/\/table\/demo/, 'post', {
+Mock.mock(/\/table\/demo1/, 'post', {
     "total": 50,
     "per_page": 15,
     "current_page": 1,
@@ -32,6 +32,6 @@ Mock.mock(/\/table\/demo/, 'post', {
 })
 
 
-Mock.mock(/\/table\/demo/, 'delete', tableindex.list)
+Mock.mock(/\/table\/demo/[0-9], 'delete', tableindex.list)
 
 export default Mock

@@ -35,6 +35,10 @@ export default {
             bordered: true,
             size: 'default',
             hasRowSelection: true,
-          }
+          },
+        searchData:{
+            page:1,
+            page_size:10
+        }
     }
 }
