@@ -54,6 +54,9 @@ class Routers extends React.Component {
                                 <Route path="/admin/form/basic-form"
                                        component={asyncComponent(() => import("../pages/backstage/form/basic-form"))}/>
 
+                                <Route path="/admin/form/demo"
+                                       component={asyncComponent(() => import("../pages/backstage/form/formDemo"))}/>
+
                                 <Route path="/admin/redux/demo"
                                        component={asyncComponent(() => import("../pages/backstage/redux/demo"))}/>
 
