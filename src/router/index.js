@@ -40,28 +40,28 @@ class Routers extends React.Component {
                             <Switch>
 
                                 <Route path="/admin/dashborad/analysis"
-                                       component={asyncComponent(() => import("../pages/backstage/dashbord/analysis"))}/>
+                                       component={asyncComponent(() => import(/* webpackPrefetch: true */"../pages/backstage/dashbord/analysis"))}/>
                                 <Route path="/admin/dashborad/monitor"
-                                       component={asyncComponent(() => import("../pages/backstage/dashbord/monitor"))}/>
+                                       component={asyncComponent(() => import(/* webpackPrefetch: true */"../pages/backstage/dashbord/monitor"))}/>
                                 <Route path="/admin/dashborad/workplace"
-                                       component={asyncComponent(() => import("../pages/backstage/dashbord/workplace"))}/>
+                                       component={asyncComponent(() => import(/* webpackPrefetch: true */"../pages/backstage/dashbord/workplace"))}/>
 
                                 <Route path="/admin/about"
-                                       component={asyncComponent(() => import("../pages/backstage/about/index"))}/>
+                                       component={asyncComponent(() => import(/* webpackPrefetch: true */"../pages/backstage/about/index"))}/>
                                 <Route path="/admin/users"
-                                       component={asyncComponent(() => import("../pages/backstage/user/index"))}/>
+                                       component={asyncComponent(() => import(/* webpackPrefetch: true */"../pages/backstage/user/index"))}/>
 
                                 <Route path="/admin/form/basic-form"
-                                       component={asyncComponent(() => import("../pages/backstage/form/basic-form"))}/>
+                                       component={asyncComponent(() => import(/* webpackPrefetch: true */"../pages/backstage/form/basic-form"))}/>
 
                                 <Route path="/admin/form/demo"
-                                       component={asyncComponent(() => import("../pages/backstage/form/formDemo"))}/>
+                                       component={asyncComponent(() => import(/* webpackPrefetch: true */"../pages/backstage/form/formDemo"))}/>
 
                                 <Route path="/admin/redux/demo"
-                                       component={asyncComponent(() => import("../pages/backstage/redux/demo"))}/>
+                                       component={asyncComponent(() => import(/* webpackPrefetch: true */"../pages/backstage/redux/demo"))}/>
 
                                 <Route path="/admin/table/index"
-                                       component={asyncComponent(() => import("../pages/backstage/table/index"))}/>
+                                       component={asyncComponent(() => import(/* webpackPrefetch: true */"../pages/backstage/table/index"))}/>
 
                                 {/*{this.renderRouter(RouterList)}*/}
                                 <Route component={NotMatch}/>
