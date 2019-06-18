@@ -9,6 +9,9 @@ import zhCN from './lang/zh-CN/index';  //导入 i18n 配置文件,需要手动�
 import enUS from './lang/en-US/index';
 import en from 'react-intl/locale-data/en';
 import zh from 'react-intl/locale-data/zh';
+// 日期组件的多语言
+import moment from 'moment';
+import 'moment/locale/zh-cn';
 
 addLocaleData([...en, ...zh]);
 const langMap = {
@@ -22,6 +25,13 @@ const langMap = {
 )
 class Locales extends React.Component{
 
+    componentDidMount(){
+        if(this.props.language==='en'){
+            //默认使用的就是 英文
+        }else{
+            moment.locale('zh-cn');
+        }
+    }
     render(){
         return(
             <IntlProvider locale={this.props.language} messages={langMap[this.props.language]}>

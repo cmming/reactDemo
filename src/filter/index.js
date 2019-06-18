@@ -1,6 +1,6 @@
 import React from 'react';
 import { Tag } from 'antd';
-import {FormattedMessage} from 'react-intl';
+import {FormattedMessage,} from 'react-intl';
 
 class filter extends React.Component{
 

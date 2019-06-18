@@ -5,8 +5,6 @@ import {Provider} from 'react-redux'
 import "./style/index.scss";
 import * as serviceWorker from './serviceWorker';
 
-import './mock'
-
 import Locales from './locales/index'
 ReactDOM.render(
 

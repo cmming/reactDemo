@@ -1,13 +1,20 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import BaseForm from '../../../ui/form/index'
+import { store } from '../../../store/modules/tableindex';
 
-class FormDemo extends React.Component{
+
+@connect(
+    state => state.tableindex,
+    { store }
+)
+class FormDemo extends React.Component {
 
 
     render() {
-        return(
-            <BaseForm></BaseForm>
+        return (
+            <BaseForm>{this.props}</BaseForm>
         )
     }
 }
