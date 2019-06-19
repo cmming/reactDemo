@@ -24,7 +24,7 @@ class TableIndex extends React.Component {
     render(){
         return (
             <div>
-                <SearchArea></SearchArea>
+                <SearchArea>{this.props}</SearchArea>
                 <Ctable addCustomBtn={scope=>this.addCustomBtn(scope)}>
                     {this.props}
                 </Ctable>

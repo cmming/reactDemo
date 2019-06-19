@@ -41,7 +41,8 @@ const table = {
         res.status(204).json(Mock.mock({}));
     },
     index: (req, res) => {
-        res.status(201).json(Mock.mock({}));
+        console.log(req.body)
+        res.status(201).json(Mock.mock(req.body));
     }
 }
 

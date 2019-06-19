@@ -87,7 +87,7 @@ class Ctable extends React.Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         this.props.children.table.columns.map(val => {
-            val['title'] = this.props.intl.formatMessage({ id: this.props.children.table.index + '.columns.' + val.titleKey })
+            val['title'] = this.props.intl.formatMessage({ id: this.props.children.table.modelIndex + '.columns.' + val.titleKey })
             return ''
         })
     }
@@ -98,7 +98,7 @@ class Ctable extends React.Component {
         //修改请求参数
         this.props.children.setSearchData(searchData)
         //发送列表 将异步操作 变成同步
-        // this.props.children.index(this.props.children.table.searchData)
+        // this.props.children.modelIndex(this.props.children.table.searchData)
         //TODO 这种操作不太好 不知如何修改 临时方案
         setTimeout(() => { this.props.children.index(this.props.children.table.searchData) })
     }
@@ -144,7 +144,10 @@ class Ctable extends React.Component {
                     className="table-pagination"
                     showSizeChanger
                     showQuickJumper
-                    defaultCurrent={this.props.children.table.dataSource.current_page}
+                    //TODO 分页的当前页数 应该使用后台的current_page
+                    // defaultCurrent={this.props.children.table.dataSource.current_page}
+                    defaultCurrent={this.props.children.table.searchData.page}
+                    defaultPageSize={this.props.children.table.searchData.page_size}
                     total={this.props.children.table.dataSource.total}
                     showTotal={(total) => this.showTotal(total)}
                     onChange={(pageNumber, pageSize) => this.onChange(pageNumber, pageSize)}

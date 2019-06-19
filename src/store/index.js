@@ -4,7 +4,7 @@ import axiosMiddleware from 'redux-axios-middleware';
 import service from '../api/index'
 import reducers from "./reducer"
 
-
+window.devToolsExtension = window.__REDUX_DEVTOOLS_EXTENSION__;
 
 const store = createStore(reducers, compose(
     applyMiddleware(thunk,axiosMiddleware(service)),

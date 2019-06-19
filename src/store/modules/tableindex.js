@@ -16,15 +16,15 @@ export function tableindex(state = initState, action) {
     switch (action.type) {
         //不要直接去改 state 会导致state 修改了但是不会触发 页面的重新渲染
         case GET_TABLEINDEX_LIST:
-            return {...state ,table:{dataSource:action.payload.dataSource,columns: state.table.columns,index:tableindexModel.index,commonAction:state.table.commonAction,state:state.table.state,searchData:state.table.searchData}}
+            return {...state ,table:{dataSource:action.payload.dataSource,columns: state.table.columns,modelIndex:tableindexModel.modelIndex,commonAction:state.table.commonAction,state:state.table.state,searchData:state.table.searchData}}
         case STORE_TABLE_INDEX:
             return {...state}
         case DELETE_TABLE_INDEX:
-            return {...state ,table:{dataSource:action.payload.dataSource,columns: state.table.columns,index:tableindexModel.index,commonAction:state.table.commonAction,state:state.table.state},searchData:state.table.searchData}
+            return {...state ,table:{dataSource:action.payload.dataSource,columns: state.table.columns,modelIndex:tableindexModel.modelIndex,commonAction:state.table.commonAction,state:state.table.state},searchData:state.table.searchData}
         case SET_TABLEINDEX_BTN:
-            return {...state,table:{dataSource:[],columns: [...tableindexModel.table.columns,action.payload.columns],index:tableindexModel.index,commonAction:state.table.commonAction,state:state.table.state,searchData:state.table.searchData}}
+            return {...state,table:{dataSource:[],columns: [...tableindexModel.table.columns,action.payload.columns],modelIndex:tableindexModel.modelIndex,commonAction:state.table.commonAction,state:state.table.state,searchData:state.table.searchData}}
         case SET_TABLE_INDEX_SEARCHDATA:
-            return {...state,table:{dataSource:state.table.dataSource,columns: state.table.columns,index:tableindexModel.index,commonAction:state.table.commonAction,state:state.table.state,searchData:action.payload.searchData}}
+            return {...state,table:{dataSource:state.table.dataSource,columns: state.table.columns,modelIndex:tableindexModel.modelIndex,commonAction:state.table.commonAction,state:state.table.state,searchData:action.payload.searchData}}
         default:
             return {...state }
     }
@@ -73,7 +73,6 @@ export function destory(id,data) {
     return dispatch => {
         requestMap('DELETE_TABLE_INDEX_LIST', {resource_id: id,...data})
             .then(res => {
-                    console.log(res)
                     dispatch(TABLEINDEX_LIST(res.data))
                 }
             )

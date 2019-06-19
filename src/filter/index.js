@@ -6,7 +6,7 @@ class filter extends React.Component{
 
 
     static changeTableIndexType(data){
-        console.log(data)
+        // console.log(data)
         let colorArr={
             "-1": "red",
             "0": "gray",

@@ -1,4 +1,5 @@
-let express = require('express'); //引入express模块
+let express = require('express'); //引入express模块.
+var bodyParser = require('body-parser') 
 let Mock = require('mockjs'); //引入mock模块
 let Random =Mock.Random;
 
@@ -7,7 +8,7 @@ let table = require('./model/table')
 console.log(table)
 
 let app = express(); //实例化express
-
+app.use(bodyParser.urlencoded({ extended: false }))    
 
 //基础table的数据模拟
 //分页数据

@@ -1,4 +1,5 @@
 export default{
 
-    "required":"{name}不能为空",
+    "required":"不能为空",
+    "email":"邮箱格式不正确",
 }

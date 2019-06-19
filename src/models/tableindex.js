@@ -2,7 +2,7 @@
 
 
 export default {
-    index: 'tableIndex',
+    modelIndex: 'tableIndex',
     table: {
         columns: [{
                 titleKey: 'Date',
@@ -41,7 +41,7 @@ export default {
     },
     form: {
         model: {
-            email: "294225707@qq.com",
+            email: "",
             radio: "",
             checkbox: [],
             select: "",
@@ -49,23 +49,49 @@ export default {
             transfer: []
         },
         item: [
-            { label: "E-mail", props: "email", type: "Input" },
-            { label: "Radio", props: "radio", type: "Radio", options: [{ value: "a", label: "item 1" }, { value: "b", label: "item 2" }, { value: "c", label: "item 3" }] },
-            { label: "Checkbox", props: "checkbox", type: "Checkbox", options: [{ value: "A", label: "A" }, { value: "B", label: "B" }, { value: "C", label: "C" }] },
-            { label: "Select", props: "select", type: "Select", options: [{ value: "A1", label: "A1" }, { value: "B1", label: "B1" }, { value: "C1", label: "C1" }] },
-            { label: "DatePicker", props: "datePicker", type: "DatePicker" },
-            { label: "Transfer", props: "transfer", type: "Transfer", options: [{ key: "A1", label: "A1", chosen: false },{ key: "A2", label: "A2", chosen: true }] },
+            { label_key: "email", props: "email", type: "Input", placeholder: true },
+            { label_key: "radio", props: "radio", type: "Radio", options: [{ value: "a", label: "item 1" }, { value: "b", label: "item 2" }, { value: "c", label: "item 3" }] },
+            { label_key: "checkbox", props: "checkbox", type: "Checkbox", options: [{ value: "A", label: "A" }, { value: "B", label: "B" }, { value: "C", label: "C" }] },
+            { label_key: "select", props: "select", type: "Select", options: [{ value: "A1", label: "A1" }, { value: "B1", label: "B1" }, { value: "C1", label: "C1" }] },
+            // { label_key: "DatePicker", props: "datePicker", type: "DatePicker", showTime: true, format: "YYYY-MM-DD HH:mm:ss" },
+            { label_key: "datePicker", props: "datePicker", type: "DatePicker" },
+            { label_key: "transfer", props: "transfer", type: "Transfer", options: [{ key: "A1", label: "A1", chosen: false }, { key: "A2", label: "A2", chosen: true }] },
         ],
         rules: {
             email: [{
                     type: 'email',
-                    message: 'email',
+                    message_key: 'email',
                 },
                 {
                     required: true,
-                    message: "required",
+                    message_key: "required",
                 }
             ]
+        }
+    },
+    searchArea: {
+        model: {
+            email: "",
+            radio: "",
+            checkbox: [],
+            select: "",
+            datePicker: "",
+            page: 1,
+            page_size: 10
+        },
+        item: [
+            { label_key: "email", props: "email", type: "Input", placeholder: true },
+            { label_key: "radio", props: "radio", type: "Radio", options: [{ value: "a", label: "item 1" }, { value: "b", label: "item 2" }, { value: "c", label: "item 3" }] },
+            { label_key: "checkbox", props: "checkbox", type: "Checkbox", options: [{ value: "A", label: "A" }, { value: "B", label: "B" }, { value: "C", label: "C" }] },
+            { label_key: "select", props: "select", type: "Select", options: [{ value: "A1", label: "A1" }, { value: "B1", label: "B1" }, { value: "C1", label: "C1" }] },
+            // { label_key: "DatePicker", props: "datePicker", type: "DatePicker", showTime: true, format: "YYYY-MM-DD HH:mm:ss" },
+            { label_key: "datePicker", props: "datePicker", type: "DatePicker" },
+        ],
+        rules: {
+            email: [{
+                type: 'email',
+                message_key: 'email',
+            }, ]
         }
     }
 }

@@ -25,7 +25,8 @@ service.interceptors.request.use(config => {
         config.method === "put" ||
         config.method === "delete"
     ) {
-        config.data = qs.stringify(config.data);
+        //{ indices: false } 用来处理传递数组时候的问题
+        config.data = qs.stringify(config.data,{ indices: false });
     }
     return config
 }, error => {
@@ -36,9 +37,13 @@ service.interceptors.request.use(config => {
 service.interceptors.response.use(response => {
     store.dispatch({ type: 'HIDE_LOADING' })
     responseMsgInterceptorHandle.msg(response)
+    // console.log(new responseMsgInterceptorHandle())
     return response;
 }, error => {
     store.dispatch({ type: 'HIDE_LOADING' })
+    // var msgStr = JSON.parse(error.message);
+    responseMsgInterceptorHandle.msg(error.response)
+    console.log(error,error.response)
     return Promise.reject(error);
 })
 

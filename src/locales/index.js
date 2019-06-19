@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import Router from '../router/index'
 import { LocaleProvider } from 'antd';
 import azhCN from 'antd/lib/locale-provider/zh_CN';
 import aenUS from 'antd/lib/locale-provider/en_US';
@@ -36,7 +35,7 @@ class Locales extends React.Component{
         return(
             <IntlProvider locale={this.props.language} messages={langMap[this.props.language]}>
                 <LocaleProvider locale={this.props.language==='en'?aenUS:azhCN}>
-                        <Router />
+                        {this.props.children}
                 </LocaleProvider>
             </IntlProvider>
         )

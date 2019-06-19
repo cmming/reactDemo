@@ -3,37 +3,42 @@ import React from 'react'
 import { notification } from 'antd';
 import httpStatus from '../../config/statusCode'
 import commonConfig from '../../config/commonConfig'
-import locales from '../../locales/index'
+// import { FormattedMessage } from 'react-intl';
 
-const openNotificationWithIcon = (type,description) => {
-    // console.log(description)
+const openNotificationWithIcon = (type, description) => {
     notification[type]({
-        message: 'Notification Title',
-        //TODO 处理弹窗的多语言
+        message: '提示',
+        // message: 'Notification Title',
         description: description,
-        duration:commonConfig.notificationDuration
+        //TODO 处理弹窗的多语言
+        // description: <div><FormattedMessage
+        //     id="intl.hello"
+        // /></div>,
+        duration: commonConfig.notificationDuration
     });
 };
 
-class responseMsgInterceptorHandle extends React.Component {
+
+class ResponseMsgInterceptorHandle extends React.Component {
 
 
     static msg(response) {
-
-        console.log(locales)
-        let langId = 'response' + ('.' + httpStatus.getMsg(response.status)) + ('.' + response.config.method)
-        // console.log(response, langId,<FormattedMessage
-        //     id={langId}  
+        // console.log(this.props.intl.formatMessage({id: 'intl.name'},{name: 'joe'}))
+        // console.log(this.props)
+        let langId = 'response.' + (httpStatus.getMsg(response.status)) + ('.' + response.config.method)
+        // console.log(<FormattedMessage
+        //     id="intl.hello"
         // />)
         if (response.status === httpStatus.HTTP_CREATED) {
-            openNotificationWithIcon('success',langId)
+            openNotificationWithIcon('success', langId)
         } else if (response.status === httpStatus.HTTP_NO_CONTENT) {
-            openNotificationWithIcon('success',langId)
+            openNotificationWithIcon('success', langId)
+        }else if(response.status === httpStatus.HTTP_NO_FOUND){
+            openNotificationWithIcon('error', response.statusText)
         }
     }
 
-    
 
 }
 
-export default responseMsgInterceptorHandle
+export default ResponseMsgInterceptorHandle
