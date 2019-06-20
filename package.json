@@ -71,7 +71,8 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "mock": "nodemon server/index.js"
+    "mock": "nodemon server/index.js",
+    "docs": "docsify serve ./docs/ --port 3090"
   },
   "eslintConfig": {
     "extends": "react-app"
