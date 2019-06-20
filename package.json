@@ -31,6 +31,7 @@
     "file-loader": "2.0.0",
     "fs-extra": "7.0.1",
     "html-webpack-plugin": "4.0.0-alpha.2",
+    "http-proxy-middleware": "^0.19.1",
     "identity-obj-proxy": "3.0.0",
     "jest": "23.6.0",
     "jest-pnp-resolver": "1.0.2",
@@ -57,6 +58,7 @@
     "redux-thunk": "^2.3.0",
     "resolve": "1.10.0",
     "sass-loader": "7.1.0",
+    "source-map-explorer": "^2.0.1",
     "store": "^2.0.12",
     "style-loader": "0.23.1",
     "terser-webpack-plugin": "1.2.2",
@@ -64,15 +66,16 @@
     "webpack": "4.28.3",
     "webpack-dev-server": "3.1.14",
     "webpack-manifest-plugin": "2.0.4",
-    "workbox-webpack-plugin": "3.6.3",
-    "http-proxy-middleware": "^0.19.1"
+    "workbox-webpack-plugin": "3.6.3"
   },
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "mock": "nodemon server/index.js",
-    "docs": "docsify serve ./docs/ --port 3090"
+    "docs": "docsify serve ./docs/ --port 3090",
+    "product": "http-server build",
+    "analyze": "source-map-explorer 'build/static/js/*.js'"
   },
   "eslintConfig": {
     "extends": "react-app"

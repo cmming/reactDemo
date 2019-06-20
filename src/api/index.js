@@ -35,6 +35,7 @@ service.interceptors.request.use(config => {
 })
 
 service.interceptors.response.use(response => {
+    console.log(process.env)
     store.dispatch({ type: 'HIDE_LOADING' })
     responseMsgInterceptorHandle.msg(response)
     // console.log(new responseMsgInterceptorHandle())
