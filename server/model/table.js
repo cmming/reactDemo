@@ -26,11 +26,13 @@ const table = {
         }
         for (let i = 0; i < 10; i++) {
             const tmp = {
-                key: i,
-                date: Random.date('yyyy-MM-dd'),
-                amount: Random.integer(60, 100),
-                type: Random.integer(-1, 1),
-                note: 'transfer',
+                'id': i,
+                email: "11294225707@qq.com1",
+                radio: "a",
+                checkbox: ['A'],
+                select: "A1",
+                datePicker: Random.date('yyyy-MM-dd'),
+                transfer: ['A2']
             };
             result.data.push(tmp)
 
@@ -43,7 +45,19 @@ const table = {
     index: (req, res) => {
         console.log(req.body)
         res.status(201).json(Mock.mock(req.body));
-    }
+    },
+    detail:(req, res) => {
+        console.log(req.body)
+        res.json(Mock.mock({
+            id:Random.integer(60, 100),
+            email: "11294225707@qq.com1",
+            radio: "a",
+            checkbox: ['A'],
+            select: "A1",
+            datePicker: Random.date('yyyy-MM-dd'),
+            transfer: ['A2']
+        }));
+    },
 }
 
 module.exports = table

@@ -2,52 +2,24 @@
 
 
 export default {
-    modelIndex: 'tableIndex',
+    modelIndex: 'baseTable',
     table: {
-        columns: [
-            // {
-            //     titleKey: 'Date',
-            //     dataIndex: 'date',
-            // },
-            // {
-            //     titleKey: 'Amount',
-            //     dataIndex: 'amount',
-            // },
-            // {
-            //     titleKey: 'Type',
-            //     dataIndex: 'type',
-            //     filter: "changeTableIndexType"
-            // },
-            // {
-            //     titleKey: 'Note',
-            //     dataIndex: 'note',
-            // },
-
-
+        columns: [{
+            titleKey: 'Date',
+            dataIndex: 'date',
+        },
             {
-                titleKey: 'email',
-                dataIndex: 'email',
+                titleKey: 'Amount',
+                dataIndex: 'amount',
             },
             {
-                titleKey: 'radio',
-                dataIndex: 'radio',
-                // filter: "changeTableIndexType"
+                titleKey: 'Type',
+                dataIndex: 'type',
+                filter: "changeTableIndexType"
             },
             {
-                titleKey: 'checkbox',
-                dataIndex: 'checkbox',
-            },
-            {
-                titleKey: 'select',
-                dataIndex: 'select',
-            },
-            {
-                titleKey: 'datePicker',
-                dataIndex: 'datePicker',
-            },
-            {
-                titleKey: 'transfer',
-                dataIndex: 'transfer',
+                titleKey: 'Note',
+                dataIndex: 'note',
             },
         ],
         commonAction: {
@@ -69,11 +41,11 @@ export default {
     },
     form: {
         model: {
-            email: "11",
+            email: "",
             radio: "",
             checkbox: [],
             select: "",
-            datePicker: null,
+            datePicker: "",
             transfer: []
         },
         item: [
@@ -97,7 +69,7 @@ export default {
                 options: [{value: "A1", label: "A1"}, {value: "B1", label: "B1"}, {value: "C1", label: "C1"}]
             },
             // { label_key: "DatePicker", props: "datePicker", type: "DatePicker", showTime: true, format: "YYYY-MM-DD HH:mm:ss" },
-            {label_key: "datePicker", props: "datePicker", type: "DatePicker", format: "YYYY-MM-DD"},
+            {label_key: "datePicker", props: "datePicker", type: "DatePicker"},
             {
                 label_key: "transfer",
                 props: "transfer",
@@ -156,12 +128,5 @@ export default {
                 message_key: 'email',
             },]
         }
-    },
-    edit: {
-        mode: 'modal',
-        state: '',
-        update_key: "id",
-        delete_key: "id",
-        row_key:'id'
     }
 }

@@ -4,11 +4,11 @@ import {Button} from 'antd'
 import {injectIntl} from 'react-intl';
 import Ctable from '../../../ui/table/index'
 import SearchArea from '../../../ui/searchArea/index'
-import  { index,destory,initBtn,initData,setSearchData } from '../../../store/modules/tableindex';
+import  { index,destory,initBtn,initData,setSearchData,store,detail,update } from '../../../store/modules/tableindex';
 
 @connect(
     state => state.tableindex,
-    {index,destory,initBtn,initData,setSearchData}
+    {index,destory,initBtn,initData,setSearchData,store,detail,update}
 )
 @injectIntl
 class TableIndex extends React.Component {

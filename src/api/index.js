@@ -10,7 +10,7 @@ import responseMsgInterceptorHandle from './interceptors/responseMsgInterceptor'
 
 
 const service = axios.create({
-    // baseURL: process.env.BASE_API, // api的base_url
+    baseURL: process.env.REACT_APP_BASE_API, // api的base_url
     // baseURL: '/api', // api的base_url
     timeout: 15000, // request timeout
     withCredentials: true // 选项表明了是否是跨域请求

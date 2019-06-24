@@ -14,5 +14,15 @@ export default {
         url: "/table/demo",
         method: "post",
         hasData: true,
-    }
+    },
+    GET_TABLE_INDEX: {
+        url: "/table/demo",
+        method: "get",
+        hasData: true,
+    },
+    UDATE_TABLE_INDEX: {
+        url: "/table/demo",
+        method: "put",
+        hasData: true,
+    },
 }

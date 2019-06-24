@@ -150,6 +150,5 @@
     "less-loader": "^4.1.0",
     "mockjs": "^1.0.1-beta3",
     "node-sass": "^4.12.0"
-  },
-  "proxy": "http://localhost:8090/"
+  }
 }

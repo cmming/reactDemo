@@ -14,11 +14,13 @@ app.use(bodyParser.urlencoded({ extended: false }))
 //分页数据
 app.get('/table/demo', table.list);
 //删除数据
-app.delete('/table/demo/[0-9]',  table.list);
+app.delete('/table/demo/[0-9]+',  table.list);
 //更新数据
-app.put('/table/demo/[0-9]',  table.update);
+app.put('/table/demo/[0-9]+',  table.update);
 //保存数据
 app.post('/table/demo', table.index);
+//detail
+app.get('/table/demo/[0-9]+', table.detail);
 
 
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Card, Form, Input, Button, Radio, Checkbox, Select, DatePicker, Transfer } from 'antd'
 import { injectIntl } from 'react-intl';
+import moment from 'moment';
 
 const { Option } = Select;
 
@@ -86,7 +87,7 @@ class BaseForm extends React.Component {
                     children.push(<Form.Item label={val.label} key={val.props}>
                         {getFieldDecorator(val.props, {
                             rules: this.props.children.form.rules[val.props],
-                            // 'initialValue': this.props.children.form.model[val.props]
+                            'initialValue': moment(this.props.children.form.model[val.props]!==''?this.props.children.form.model[val.props]:null,val.format?val.format:'YYYY-MM-DD')
                         })(<DatePicker
                             format={val.format ? val.format : "YYYY-MM-DD"}
                             onChange={(date, dateString) => {
@@ -135,7 +136,20 @@ class BaseForm extends React.Component {
                 console.log('Received values of form: ', values);
                 //将值赋值到 redux 中的表单模型中，然后数据提交
                 // console.log(this.props.children.form.model)
-                this.props.children.store(this.props.children.form.model)
+                if(this.props.children.edit.state === 'update'){
+                    let update_key = this.props.children.edit.update_key?this.props.children.edit.update_key:'id'
+                    this.props.children.update(this.props.children.form.model[update_key],this.props.children.form.model)
+                    //判断父组件是否为弹框
+                    if(this.props.children.edit.mode === 'modal'){
+                        this.props.closeModal()
+                    }
+                }else{
+                    this.props.children.store(this.props.children.form.model)
+                    //判断父组件是否为弹框
+                    if(this.props.children.edit.mode === 'modal'){
+                        this.props.closeModal()
+                    }
+                }
             }
         });
     };
