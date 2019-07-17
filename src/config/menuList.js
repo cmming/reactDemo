@@ -47,6 +47,11 @@ const menuList = [
                 "title": "基础表单",
                 "icon": "question",
             },
+            {
+                "key": "/admin/form/demo",
+                "title": "表单Demo",
+                "icon": "question",
+            },
         ]
     },
     {

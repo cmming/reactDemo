@@ -7,11 +7,11 @@ export default {
     list: config => {
         // const { username } = JSON.parse(config.body)
         // console.log(username)
-        // console.log(param2Obj(config.url))
+        console.log(config,param2Obj(config.body))
         const { id } = param2Obj(config.url)
         console.log(id)
         var result = {
-            "total": 50,
+            "total": Random.integer(60, 100),
             "per_page": 15,
             "current_page": 1,
             "last_page": 4,
@@ -29,7 +29,7 @@ export default {
                 key: i,
                 date: Random.date('yyyy-MM-dd'),
                 amount: Random.integer(60, 100),
-                type: 'income',
+                type: Random.integer(-1,1),
                 note: 'transfer',
             };
             result.data.push(tmp)

@@ -1,31 +1,34 @@
 import React from 'react';
 import {connect} from 'react-redux'
+import {Button} from 'antd'
+import {injectIntl} from 'react-intl';
 import Ctable from '../../../ui/table/index'
-import  { SET_TABLEINDEX_BTN_ACTION,GET_TABLEINDEX_LIST_ACTION } from '../../../store/modules/tableindex';
+import SearchArea from '../../../ui/searchArea/index'
+import  { index,destory,initBtn,initData,setSearchData,store,detail,update } from '../../../store/modules/tableindex';
 
 @connect(
     state => state.tableindex,
-    {SET_TABLEINDEX_BTN_ACTION,GET_TABLEINDEX_LIST_ACTION}
+    {index,destory,initBtn,initData,setSearchData,store,detail,update}
 )
+@injectIntl
 class TableIndex extends React.Component {
-    //制作是否加载按钮的开关
-    componentWillMount(){
-        if(!this.props.table.hasHandleColumns){
-            this.props.SET_TABLEINDEX_BTN_ACTION({
-                title: 'Action',
-                key: 'action',
-                render: () => <a href = "javascript:;" > Delete </a>,
-            })
-        }
 
-        this.props.GET_TABLEINDEX_LIST_ACTION()
+    customAction(scope){
+        console.log(scope,'自定义的行为')
+    }
+    addCustomBtn(scope){
+        return <Button type="primary" ghost icon="stop" onClick={()=>{this.customAction(scope)}}> {this.props.intl.formatMessage({id:'tableIndex.columns.Action.'+this.props.table.commonAction.editAction.titleKey})} </Button>;
     }
 
+
     render(){
-        console.log(this.props.table)
         return (
-            <Ctable model={this.props.table}>
-            </Ctable>
+            <div>
+                <SearchArea>{this.props}</SearchArea>
+                <Ctable addCustomBtn={scope=>this.addCustomBtn(scope)}>
+                    {this.props}
+                </Ctable>
+            </div>
         )
     }
 }

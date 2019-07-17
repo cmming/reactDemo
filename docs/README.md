@@ -90,3 +90,10 @@ const lessModuleRegex = /\.module\.less$/;
 ## 高阶组件
 
 > 1.属性代理 2.反向继承
+
+## 多语言的封装
+```
+cnpm install react-intl -D
+```
+
+## 权限路由的控制

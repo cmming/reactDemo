@@ -1,6 +1,12 @@
 {
   "compilerOptions": {
-    "baseUrl": "src"
+    "baseUrl": "src",
+    //vscode提示错误
+    "experimentalDecorators": true,
   },
+  "exclude": [
+    "node_modules",
+    "dist"
+],
   "include": ["src"]
 }
